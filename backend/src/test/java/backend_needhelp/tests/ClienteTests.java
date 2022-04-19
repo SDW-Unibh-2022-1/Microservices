@@ -1,6 +1,6 @@
 package backend_needhelp.tests;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertNotNull;
 
 import java.text.ParseException;
@@ -35,10 +35,10 @@ import br.unibh.sdm.backend_needhelp.persistencia.ClienteRepository;
 
 /**
  * Classe de testes para a entidade Cotacao. <br>
- * Para rodar, antes sete a seguinte variável de ambiente:
+ * Para rodar, antes sete a seguinte variï¿½vel de ambiente:
  * -Dspring.config.location=C:/Users/jhcru/sdm/ <br>
- * Neste diretório, criar um arquivo application.properties contendo as
- * seguitnes variáveis: <br>
+ * Neste diretï¿½rio, criar um arquivo application.properties contendo as
+ * seguitnes variï¿½veis: <br>
  * amazon.aws.accesskey=<br>
  * amazon.aws.secretkey=<br>
  * 
@@ -116,7 +116,7 @@ public class ClienteTests {
 		}
 //		result = repository.findByNome("");
 //		assertEquals(result.size(), 0);
-		LOGGER.info("Exclusão feita com sucesso");
+		LOGGER.info("Exclusï¿½o feita com sucesso");
 	}
 
 }
