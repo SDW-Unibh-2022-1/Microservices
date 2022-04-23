@@ -33,18 +33,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import br.unibh.sdm.backend_needhelp.entidades.Cliente;
 import br.unibh.sdm.backend_needhelp.persistencia.ClienteRepository;
 
-/**
- * Classe de testes para a entidade Cotacao. <br>
- * Para rodar, antes sete a seguinte vari�vel de ambiente:
- * -Dspring.config.location=C:/Users/jhcru/sdm/ <br>
- * Neste diret�rio, criar um arquivo application.properties contendo as
- * seguitnes vari�veis: <br>
- * amazon.aws.accesskey=<br>
- * amazon.aws.secretkey=<br>
- * 
- * @author jhcru
- *
- */
+
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = { PropertyPlaceholderAutoConfiguration.class, ClienteTests.DynamoDBConfig.class })
@@ -87,9 +76,9 @@ public class ClienteTests {
 	public void teste1Criacao() throws ParseException {
 		LOGGER.info("Criando objetos...");
 
-		Cliente c1 = new Cliente(1, "Rodrigo", "1388408041");
-		Cliente c2 = new Cliente(2, "Rodrigo", "46801087080");
-		Cliente c3 = new Cliente(3, "Rodrigo", "8044805005");
+		Cliente c1 = new Cliente(1, "Rodrigo", "1388408041", "(31)9839698670");
+		Cliente c2 = new Cliente(2, "Matheus", "46801087080", "(31)7481851120");
+		Cliente c3 = new Cliente(3, "Diego", "8044805005", "(31)996245524520");
 
 		repository.save(c1);
 		repository.save(c2);
@@ -106,17 +95,21 @@ public class ClienteTests {
 		LOGGER.info("Encontrado: {}", result.size());
 	}
 
-//	@Test
+	@Test
 	public void teste2Exclusao() throws ParseException {
 		LOGGER.info("Excluindo objetos...");
-		List<Cliente> result = repository.findByNome("Rodrigo");
-		for (Cliente cliente : result) {
-			LOGGER.info("Excluindo Cotacao id = " + cliente.getId());
-			repository.delete(cliente);
-		}
-//		result = repository.findByNome("");
-//		assertEquals(result.size(), 0);
-		LOGGER.info("Exclus�o feita com sucesso");
+		
+		Cliente c1 = new Cliente(1, "Rodrigo", "1388408041", "(31)9839698670");
+		repository.delete(c1);
+
+		Cliente c2 = new Cliente(2, "Rodrigo", "46801087080", "(31)7481851120");
+		repository.delete(c2);
+
+		Cliente c3 = new Cliente(3, "Rodrigo", "8044805005", "(31)996245524520");
+		repository.delete(c3);
+
+		//assertEquals(result.size(), 0);
+		LOGGER.info("Exclusão feita com sucesso");
 	}
 
 }

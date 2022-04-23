@@ -1,5 +1,7 @@
 package br.unibh.sdm.backend_needhelp.entidades;
 
+import java.util.Objects;
+
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
@@ -10,26 +12,25 @@ public class Cliente {
 		private int id;
 		private String nome;
 		private String cpf;
+		private String contato;
 		
 		public Cliente() {
 			super();
 		}
 
-		public Cliente(int id, String nome, String cpf) {
+		public Cliente(int id, String nome, String cpf, String contato) {
 			super();
 			this.id = id;
 			this.nome = nome;
 			this.cpf = cpf;
+			this.contato = contato;
 		}
+
+		
 
 		@Override
 		public int hashCode() {
-			final int prime = 31;
-			int result = 1;
-			result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-			result = prime * result + id;
-			result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-			return result;
+			return Objects.hash(contato, cpf, id, nome);
 		}
 
 		@Override
@@ -41,19 +42,8 @@ public class Cliente {
 			if (getClass() != obj.getClass())
 				return false;
 			Cliente other = (Cliente) obj;
-			if (cpf == null) {
-				if (other.cpf != null)
-					return false;
-			} else if (!cpf.equals(other.cpf))
-				return false;
-			if (id != other.id)
-				return false;
-			if (nome == null) {
-				if (other.nome != null)
-					return false;
-			} else if (!nome.equals(other.nome))
-				return false;
-			return true;
+			return Objects.equals(contato, other.contato) && Objects.equals(cpf, other.cpf) && id == other.id
+					&& Objects.equals(nome, other.nome);
 		}
 
 		@DynamoDBHashKey
@@ -81,6 +71,16 @@ public class Cliente {
 
 		public void setCpf(String cpf) {
 			this.cpf = cpf;
+		}
+		
+		
+		@DynamoDBAttribute
+		public String getContato() {
+			return contato;
+		}
+
+		public void setContato(String contato) {
+			this.contato = contato;
 		}
 
 		@Override
