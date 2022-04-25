@@ -14,5 +14,8 @@ public interface ClienteRepository extends CrudRepository<Cliente, String> {
 	List<Cliente> findByNome(String nome);
 
 	Iterable<Cliente> findById(int id);
+
+	void deleteById(int id);
+
 	
 }

@@ -16,7 +16,7 @@ import br.unibh.sdm.backend_needhelp.persistencia.ClienteRepository;
 
 @Service
 public class ClienteService {
-	
+
 	 private static final Logger logger= LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	    
 	    private final ClienteRepository clienteRepo;
@@ -27,45 +27,45 @@ public class ClienteService {
 	    
 	    public List<Cliente> getClientes(){
 	        if(logger.isInfoEnabled()){
-	            logger.info("Buscando todos os objetos");
+	            logger.info("Buscando todos os clientes");
 	        }
 	        Iterable<Cliente> lista = this.clienteRepo.findAll();
 	        if (lista == null) {
 	        	return new ArrayList<Cliente>();
 	        }
 	        return IteratorUtils.toList(lista.iterator());
-	    }    
-
-	    public Cliente getClienteByNome(String nome){
+	    }
+//
+//	    public Cliente getClienteByNome(String nome){
+//	        if(logger.isInfoEnabled()){
+//	            logger.info("Buscando Cliente com o nome {}",nome);
+//	        }
+//	        Optional<Cliente> retorno = this.clienteRepo.findByNome(nome);
+//	        if(!retorno.isPresent()){
+//	            throw new RuntimeException("Cliente com o codigo "+nome+" nao encontrada");
+//	        }
+//	        return retorno.get();
+//	    }
+	    
+	    public Cliente getClienteById(int id){
 	        if(logger.isInfoEnabled()){
-	            logger.info("Buscando Clientes com o nome {}",nome);
+	            logger.info("Buscando Cliente com o id {}",id);
 	        }
-	        Optional<Cliente> retorno = this.clienteRepo.findByNome(nome);
-	        if(!retorno.isPresent()){
-	            throw new RuntimeException("Cliente com o nome "+ nome+" nao encontrada");
+	        List<Cliente> lista = (List<Cliente>) this.clienteRepo.findById(id);
+	        if(lista == null || lista.isEmpty()){
+	            throw new RuntimeException("Cliente com o nome "+id+" nao encontrada");
 	        }
-	        return retorno.get();
+	        return lista.get(0);
 	    }
-	    
-	    public List<Cliente> getClienteById(int id){
-	    	if(logger.isInfoEnabled()){
-	            logger.info("Buscando todos os objetos");
-	        }
-	        Iterable<Cliente> lista = this.clienteRepo.findById(id);
-	        if (lista == null) {
-	        	return new ArrayList<Cliente>();
-	        }
-	        return IteratorUtils.toList(lista.iterator());
-	    }
-	    
+
 	    public Cliente saveCliente(Cliente cliente){
 	        if(logger.isInfoEnabled()){
-	            logger.info("Salvando Clientes com os detalhes {}",cliente.toString());
+	            logger.info("Salvando Cliente com os detalhes {}",cliente.toString());
 	        }
 	        return this.clienteRepo.save(cliente);
 	    }
 	    
-	    public void deleteCliente(String id){
+	    public void deleteCliente(int id){
 	        if(logger.isInfoEnabled()){
 	            logger.info("Excluindo Cliente com id {}",id);
 	        }
@@ -77,4 +77,8 @@ public class ClienteService {
 	        return retorno.isPresent() ? true:  false;
 	    }
 
+	    public boolean isCriptomoedaExists(String id){
+	    	Optional<Cliente> retorno = this.clienteRepo.findById(id);
+	        return retorno.isPresent() ? true:  false;
+	    }
 }

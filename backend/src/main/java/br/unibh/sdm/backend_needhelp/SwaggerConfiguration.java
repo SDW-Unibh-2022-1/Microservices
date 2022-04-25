@@ -1,3 +1,4 @@
+package br.unibh.sdm.backend_needhelp;
 
 
 import org.springframework.context.annotation.Bean;

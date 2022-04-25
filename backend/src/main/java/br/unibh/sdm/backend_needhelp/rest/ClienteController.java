@@ -58,7 +58,7 @@ public class ClienteController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "{id}")
-    public boolean updateCliente(@PathVariable String id) throws Exception {
+    public boolean updateCliente(@PathVariable int id) throws Exception {
          clienteService.deleteCliente(id);
          return true;
     }
