@@ -13,5 +13,7 @@ public interface FornecedorRepository extends CrudRepository<Fornecedor, String>
 	List<Fornecedor> findByNome(String nome);
 
 	Iterable<Fornecedor> findById(int id);
+
+	void deleteById(int id);
 	
 }
