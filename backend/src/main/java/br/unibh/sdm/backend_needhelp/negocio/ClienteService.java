@@ -47,13 +47,13 @@ public class ClienteService {
 //	        return retorno.get();
 //	    }
 	    
-	    public Cliente getClienteById(int id){
+	    public Cliente getClienteByCpf(String  cpf){
 	        if(logger.isInfoEnabled()){
-	            logger.info("Buscando Cliente com o id {}",id);
+	            logger.info("Buscando Cliente com ocpf {}", cpf );
 	        }
-	        List<Cliente> lista = (List<Cliente>) this.clienteRepo.findById(id);
+	        List<Cliente> lista = (List<Cliente>) this.clienteRepo.findByCpf(cpf);
 	        if(lista == null || lista.isEmpty()){
-	            throw new RuntimeException("Cliente com o nome "+id+" nao encontrada");
+	            throw new RuntimeException("Cliente com o cpf "+cpf+" nao encontrada");
 	        }
 	        return lista.get(0);
 	    }
@@ -65,11 +65,11 @@ public class ClienteService {
 	        return this.clienteRepo.save(cliente);
 	    }
 	    
-	    public void deleteCliente(int id){
+	    public void deleteCliente(String cpf){
 	        if(logger.isInfoEnabled()){
-	            logger.info("Excluindo Cliente com id {}",id);
+	            logger.info("Excluindo Cliente com cpf {}",cpf);
 	        }
-	        this.clienteRepo.deleteById(id);
+	        this.clienteRepo.deleteByCpf(cpf);
 	    }
 
 	    public boolean isClienteExists(Cliente cliente){
@@ -77,8 +77,8 @@ public class ClienteService {
 	        return retorno.isPresent() ? true:  false;
 	    }
 
-	    public boolean isCriptomoedaExists(String id){
-	    	Optional<Cliente> retorno = this.clienteRepo.findById(id);
+	    public boolean isClienteExists(String cpf ){
+	    	Optional<Cliente> retorno = this.clienteRepo.findById(cpf);
 	        return retorno.isPresent() ? true:  false;
 	    }
 }

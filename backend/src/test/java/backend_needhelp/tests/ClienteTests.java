@@ -1,11 +1,11 @@
 package backend_needhelp.tests;
 
 
+
 import static org.junit.Assert.assertNotNull;
 
 import java.text.ParseException;
 
-import java.util.List;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -76,9 +76,9 @@ public class ClienteTests {
 	public void teste1Criacao() throws ParseException {
 		LOGGER.info("Criando objetos...");
 
-		Cliente c1 = new Cliente(1, "Rodrigo", "1388408041", "(31)9839698670");
-		Cliente c2 = new Cliente(2, "Matheus", "46801087080", "(31)7481851120");
-		Cliente c3 = new Cliente(3, "Diego", "8044805005", "(31)996245524520");
+		Cliente c1 = new Cliente( "Rodrigo", "1388408041", "(31)9839698670");
+		Cliente c2 = new Cliente( "Matheus", "46801087080", "(31)7481851120");
+		Cliente c3 = new Cliente( "Diego", "8044805005", "(31)996245524520");
 
 		repository.save(c1);
 		repository.save(c2);
@@ -89,25 +89,23 @@ public class ClienteTests {
 		for (Cliente cliente : lista) {
 			LOGGER.info(cliente.toString());
 		}
-		LOGGER.info("Pesquisado um objeto");
-		List<Cliente> result = repository.findByNome("Rodrigo");
-//		assertEquals(result.size(), 7);
-		LOGGER.info("Encontrado: {}", result.size());
 	}
+//		LOGGER.info("Pesquisado um objeto");
+//		List<Cliente> result = repository.findByCpf("1388408041");
+//		assertEquals(result.size(), 7);
+//		LOGGER.info("Encontrado: {}", result.size());
+//	}
 
-	@Test
+//	@Test
 	public void teste2Exclusao() throws ParseException {
 		LOGGER.info("Excluindo objetos...");
 		
-		Cliente c1 = new Cliente(1, "Rodrigo", "1388408041", "(31)9839698670");
+		Cliente c1 = new Cliente( "Rodrigo", "1388408041", "(31)9839698670");
+		Cliente c2 = new Cliente( "Matheus", "46801087080", "(31)7481851120");
+		Cliente c3 = new Cliente( "Diego", "8044805005", "(31)996245524520");
 		repository.delete(c1);
-
-		Cliente c2 = new Cliente(2, "Rodrigo", "46801087080", "(31)7481851120");
 		repository.delete(c2);
-
-		Cliente c3 = new Cliente(3, "Rodrigo", "8044805005", "(31)996245524520");
 		repository.delete(c3);
-
 		//assertEquals(result.size(), 0);
 		LOGGER.info("Exclusão feita com sucesso");
 	}

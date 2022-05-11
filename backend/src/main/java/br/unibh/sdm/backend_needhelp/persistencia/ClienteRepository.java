@@ -17,5 +17,11 @@ public interface ClienteRepository extends CrudRepository<Cliente, String> {
 
 	void deleteById(int id);
 
+	List<Cliente> findByCpf(String cpf);
+
+	void deleteByCpf(String cpf);
+
+	
+
 	
 }

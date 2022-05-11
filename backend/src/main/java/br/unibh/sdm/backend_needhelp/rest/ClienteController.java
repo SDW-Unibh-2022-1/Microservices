@@ -36,12 +36,12 @@ public class ClienteController {
         return clienteService.getClientes();
     }
     
-    @GetMapping(value="{id}")
-    public Cliente getClienteById(@PathVariable int id) throws Exception{
-        if(!ObjectUtils.isEmpty(id)){
-           return (Cliente) clienteService.getClienteById(id);
+    @GetMapping(value="{cpf}")
+    public Cliente getClienteById(@PathVariable String cpf) throws Exception{
+        if(!ObjectUtils.isEmpty(cpf)){
+           return (Cliente) clienteService.getClienteByCpf(cpf);
         }
-        throw new Exception("Cliente com codigo "+id+" nao encontrada");
+        throw new Exception("Cliente com o cpf  "+cpf +" nao encontrada");
     }
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -50,16 +50,16 @@ public class ClienteController {
          return clienteService.saveCliente(cliente);
     }
     
-    @PutMapping(value = "{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Cliente updateCliente(@PathVariable String id, 
+    @PutMapping(value = "{cpf}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Cliente updateCliente(@PathVariable String cpf, 
     		@RequestBody @NotNull Cliente cliente) throws Exception {
          return clienteService.saveCliente(cliente);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping(value = "{id}")
-    public boolean updateCliente(@PathVariable int id) throws Exception {
-         clienteService.deleteCliente(id);
+    @DeleteMapping(value = "{cpf}")
+    public boolean updateCliente(@PathVariable String cpf) throws Exception {
+         clienteService.deleteCliente(cpf);
          return true;
     }
 }
