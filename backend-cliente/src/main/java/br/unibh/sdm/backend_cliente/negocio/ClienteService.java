@@ -13,11 +13,7 @@ import org.springframework.stereotype.Service;
 import br.unibh.sdm.backend_cliente.entidades.Cliente;
 import br.unibh.sdm.backend_cliente.persistencia.ClienteRepository;
 
-/**
- * Classe contendo a logica de negocio para Cliente
- * @author jhcru
- *
- */
+
 @Service
 public class ClienteService {
 
