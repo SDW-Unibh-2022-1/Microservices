@@ -3,6 +3,7 @@ package br.unibh.sdm.backend_needhelp;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.RestController;
 
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -20,14 +21,14 @@ class SwaggerConfiguration {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.any())        
+                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
                 .paths(PathSelectors.any())
                 .build();
     }
     
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Cliente API")
-                .description("API de referência para Cliente")
+        return new ApiInfoBuilder().title("Fornecedor/Prestador API")
+                .description("API de referência para fornecedores e prestador")
                 .license("Licença Apache 2.0")
                 .version("Versão 1.0.0").build();
     }
