@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Import;
 import br.unibh.sdm.backend_FornecedorPrestador.persistencia.DynamoDBConfig;
 
 
+
 @SpringBootApplication
 @Import({DynamoDBConfig.class})
 public class Application {
@@ -18,8 +19,8 @@ public class Application {
 
 	public static void main(String[] args) {
 		log.info("Inicializando...");
-		System.setProperty("server.servlet.context-path", "/Fornecedor&prestador -api");
+		System.setProperty("server.servlet.context-path", "/Fornecedor&prestador-api");
 		new SpringApplicationBuilder(Application.class).web(WebApplicationType.SERVLET).run(args);
 	}
 
-}
+}	

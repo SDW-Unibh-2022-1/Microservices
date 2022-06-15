@@ -15,7 +15,7 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 
 
 @Configuration
-@EnableDynamoDBRepositories(basePackages = "br.unibh.sdm.backend_needhelp.persistencia")
+@EnableDynamoDBRepositories(basePackages = "br.unibh.sdm.backend_FornecedorPrestador.persistencia")
 
 public class DynamoDBConfig {
 	@Value("${amazon.aws.accesskey}")
