@@ -33,11 +33,9 @@ import br.unibh.sdm.backend_FornecedorPrestador.entidades.Fornecedor;
 import br.unibh.sdm.backend_FornecedorPrestador.persistencia.FornecedorRepository;
 
 
-
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { PropertyPlaceholderAutoConfiguration.class, FornecedorTests.DynamoDBConfig.class })
+@SpringBootTest(classes = {PropertyPlaceholderAutoConfiguration.class, FornecedorTests.DynamoDBConfig.class})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-
 public class FornecedorTests {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(FornecedorTests.class);
@@ -75,8 +73,8 @@ public class FornecedorTests {
 	public void teste1Criacao() throws ParseException {
 		LOGGER.info("Criando objetos...");
 
-		Fornecedor f1 = new Fornecedor(1, "tintas", "tinta", "rua marataizes n°21","tintas@gmail.com");
-		Fornecedor f2 = new Fornecedor(2, "Testeja", "Piso", "rua colehos n°1565","testeja@gmail.com");
+		Fornecedor f1 = new Fornecedor(1, "tintas", "tinta", "rua marataizes nï¿½21","tintas@gmail.com");
+		Fornecedor f2 = new Fornecedor(2, "Testeja", "Piso", "rua colehos nï¿½1565","testeja@gmail.com");
 
 		repository.save(f1);
 		repository.save(f2);
@@ -97,14 +95,14 @@ public class FornecedorTests {
 	public void teste2Exclusao() throws ParseException {
 		LOGGER.info("Excluindo objetos...");
 		
-		Fornecedor f1 = new Fornecedor(1, "tintas", "tinta", "rua marataizes n°21","tintas@gmail.com");
+		Fornecedor f1 = new Fornecedor(1, "tintas", "tinta", "rua marataizes nï¿½21","tintas@gmail.com");
 		repository.delete(f1);
 		
-		Fornecedor f2 = new Fornecedor(2, "Testeja", "Piso", "rua colehos n°1565","testeja@gmail.com");
+		Fornecedor f2 = new Fornecedor(2, "Testeja", "Piso", "rua colehos nï¿½1565","testeja@gmail.com");
 		repository.delete(f2);
 
 		//assertEquals(result.size(), 0);
-		LOGGER.info("Exclusão feita com sucesso");
+		LOGGER.info("Exclusï¿½o feita com sucesso");
 	}
 
 }
